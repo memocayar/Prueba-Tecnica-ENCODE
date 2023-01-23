@@ -15,7 +15,7 @@ public partial class DbPruebaTecnicaContext : DbContext
     {
     }
 
-    public virtual DbSet<Actividad> Actividads { get; set; }
+    public virtual DbSet<Actividad> Actividades { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 

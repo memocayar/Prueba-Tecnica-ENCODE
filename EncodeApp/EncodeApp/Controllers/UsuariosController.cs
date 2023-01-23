@@ -6,34 +6,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EncodeApp.Models;
+using EncodeApp.Services;
+
 
 namespace EncodeApp.Controllers
 {
     public class UsuariosController : Controller
     {
-        private readonly DbPruebaTecnicaContext _context;
+        private readonly IUsuarioService _usuarioService;
 
-        public UsuariosController(DbPruebaTecnicaContext context)
+        public UsuariosController(IUsuarioService usuarioService)
         {
-            _context = context;
+            _usuarioService = usuarioService;
         }
 
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Usuarios.ToListAsync());
+            return View(await _usuarioService.GetAllUsuarios());
         }
 
         // GET: Usuarios/Details/5
         public async Task<IActionResult> Details(long? id)
         {
-            if (id == null || _context.Usuarios == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.IdUsuario == id);
+            var usuario = _usuarioService.GetUsuarioById((long)id);
+
             if (usuario == null)
             {
                 return NotFound();
@@ -49,16 +51,13 @@ namespace EncodeApp.Controllers
         }
 
         // POST: Usuarios/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,Nombre,Apellido,CorreoElectronico,FechaNacimiento,Telefono,Pais,Contacto")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
-                await _context.SaveChangesAsync();
+                await _usuarioService.CreateUsuarioAsync(usuario);
                 return RedirectToAction(nameof(Index));
             }
             return View(usuario);
@@ -67,12 +66,12 @@ namespace EncodeApp.Controllers
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
-            if (id == null || _context.Usuarios == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _usuarioService.GetUsuarioById((long)id);
             if (usuario == null)
             {
                 return NotFound();
@@ -94,22 +93,23 @@ namespace EncodeApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(usuario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UsuarioExists(usuario.IdUsuario))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _usuarioService.UpdateUsuarioAsync(usuario);
+                // try
+                // {
+                //     _context.Update(usuario);
+                //     await _context.SaveChangesAsync();
+                // }
+                // catch (DbUpdateConcurrencyException)
+                // {
+                //     if (!UsuarioExists(usuario.IdUsuario))
+                //     {
+                //         return NotFound();
+                //     }
+                //     else
+                //     {
+                //         throw;
+                //     }
+                // }
                 return RedirectToAction(nameof(Index));
             }
             return View(usuario);
@@ -118,13 +118,13 @@ namespace EncodeApp.Controllers
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {
-            if (id == null || _context.Usuarios == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.IdUsuario == id);
+            var usuario = _usuarioService.GetUsuarioById((long)id);
+
             if (usuario == null)
             {
                 return NotFound();
@@ -133,28 +133,16 @@ namespace EncodeApp.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
+        // DELETE: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            if (_context.Usuarios == null)
+            if (await _usuarioService.DeleteUsuarioAsync(id))
             {
-                return Problem("Entity set 'DbPruebaTecnicaContext.Usuarios'  is null.");
+                return RedirectToAction(nameof(Index));
             }
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario != null)
-            {
-                _context.Usuarios.Remove(usuario);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool UsuarioExists(long id)
-        {
-          return _context.Usuarios.Any(e => e.IdUsuario == id);
+            return Problem("Entity set 'DbPruebaTecnicaContext.Usuarios'  is null.");
         }
     }
 }
