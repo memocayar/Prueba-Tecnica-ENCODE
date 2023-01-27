@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EncodeApp.Models.Actividad>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Actividades</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Fecha de Actividad
+            </th>
+            <th>
+                Nombre Completo
+            </th>
+            <th>
+                Detalle de actividad
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderByDescending(a => a.CreateDate)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.Nombre)
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
