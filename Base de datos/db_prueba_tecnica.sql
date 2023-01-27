@@ -18,28 +18,31 @@ USE `db_prueba_tecnica`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `actividad`
+-- Table structure for table `actividades`
 --
 
-DROP TABLE IF EXISTS `actividad`;
+DROP TABLE IF EXISTS `actividades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `actividad` (
-  `id_actividad` int NOT NULL,
-  `create_date` date NOT NULL,
-  `id_usuario` bigint NOT NULL,
+CREATE TABLE `actividades` (
+  `id_actividad` int NOT NULL AUTO_INCREMENT,
+  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_usuario` bigint DEFAULT NULL,
   `actividad` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_actividad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`id_actividad`),
+  UNIQUE KEY `id_actividad_UNIQUE` (`id_actividad`),
+  KEY `id_usuario_idx` (`id_usuario`),
+  CONSTRAINT `id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `actividad`
+-- Dumping data for table `actividades`
 --
 
-LOCK TABLES `actividad` WRITE;
-/*!40000 ALTER TABLE `actividad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `actividad` ENABLE KEYS */;
+LOCK TABLES `actividades` WRITE;
+/*!40000 ALTER TABLE `actividades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `actividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -50,16 +53,18 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `id_usuario` int NOT NULL,
+  `id_usuario` bigint NOT NULL AUTO_INCREMENT,
+  `alta` tinyint DEFAULT NULL,
   `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
   `correo_electronico` varchar(45) NOT NULL,
-  `fecha_nacimeinto` datetime NOT NULL,
-  `telefono` int DEFAULT NULL,
+  `fecha_nacimiento` datetime NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
   `pais` varchar(45) NOT NULL,
   `contacto` tinyint NOT NULL,
   PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `correo_electronico_UNIQUE` (`correo_electronico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  UNIQUE KEY `id_usuario_UNIQUE` (`id_usuario`) /*!80000 INVISIBLE */
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-17 17:56:25
+-- Dump completed on 2023-01-27 13:27:23
