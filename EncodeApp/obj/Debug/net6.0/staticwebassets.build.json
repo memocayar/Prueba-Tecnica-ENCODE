@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mvTZcDfLZzXXTcKsgpdlj4em8bf2RB63wVOvF9VdRAs=",
+  "Hash": "gcZjIyiIKy2+HgWrVALXhTRdO0VcZoGK/DbBNdBQkkI=",
   "Source": "EncodeApp",
   "BasePath": "_content/EncodeApp",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\js\\fetch.js",
+      "SourceId": "EncodeApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\",
+      "BasePath": "_content/EncodeApp",
+      "RelativePath": "js/fetch.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\fetch.js"
+    },
+    {
+      "Identity": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\js\\Paises.json",
+      "SourceId": "EncodeApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\",
+      "BasePath": "_content/EncodeApp",
+      "RelativePath": "js/Paises.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Paises.json"
     },
     {
       "Identity": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\js\\site.js",

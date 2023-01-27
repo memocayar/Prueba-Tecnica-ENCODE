@@ -18434,6 +18434,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\Views\\Usuarios\\Select.cshtml",
+      "TargetPath": "Views\\Usuarios\\Select.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

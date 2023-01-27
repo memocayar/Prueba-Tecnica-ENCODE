@@ -39,8 +39,8 @@
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pais" class="control-label"></label>
-                <input asp-for="Pais" class="form-control" />
+                <label asp-for="Pais" class="control-label">País</label>
+                <partial asp-for="Pais" class="form-control" name="Select"></partial>
                 <span asp-validation-for="Pais" class="text-danger"></span>
             </div>
             <div class="form-group">

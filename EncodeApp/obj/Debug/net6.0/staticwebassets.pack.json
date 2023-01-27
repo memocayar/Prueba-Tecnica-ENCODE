@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\js\\Paises.json",
+      "PackagePath": "staticwebassets\\js\\Paises.json"
+    },
+    {
+      "Id": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\js\\fetch.js",
+      "PackagePath": "staticwebassets\\js\\fetch.js"
+    },
+    {
       "Id": "C:\\Users\\Maria Emilia\\Desktop\\Prueba Técnica Encode MVC\\EncodeApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
