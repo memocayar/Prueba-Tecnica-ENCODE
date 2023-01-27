@@ -40,7 +40,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Pais" class="control-label">País</label>
-                <partial asp-for="Pais" class="form-control" name="Select"></partial>
+                <select id="select" asp-for="Pais" class="form-select" aria-label="Default select example">
+                    <option value="AR">Argentina</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="CH">Chile</option>
+                    <option value="CO">Colombia</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="MX">Mexico</option>
+                    <option value="UY">Uruguay</option>
+                </select>
                 <span asp-validation-for="Pais" class="text-danger"></span>
             </div>
             <div class="form-group">

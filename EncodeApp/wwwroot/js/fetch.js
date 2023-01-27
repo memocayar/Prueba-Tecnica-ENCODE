@@ -1,4 +1,5 @@
 const select = document.querySelector('#select');
+select.addEventListener('change', cargarPaises);
 
 function cargarPaises(){
     fetch('Paises.json')
